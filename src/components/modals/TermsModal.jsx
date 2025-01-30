@@ -12,10 +12,10 @@ const TermsModal = ({ termsModal, handleTermsToggle }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.4 }}
-            className="w-full max-w-2xl rounded-md bg-gray-900 shadow-lg"
+            className="w-full max-w-2xl rounded-md bg-gray-900 shadow-lg overflow-hidden"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between bg-gray-800 px-4 py-3">
+            <div className="flex items-center justify-between bg-gray-800 px-4 py-3 ">
               <h2 className="text-lg font-semibold text-white">
                 Privacy Policy & Terms
               </h2>
