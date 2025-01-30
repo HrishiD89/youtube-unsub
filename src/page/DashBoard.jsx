@@ -13,7 +13,6 @@ import SkeletonLoader from "../components/SkeletonLoader";
 import Footer from "../components/Footer";
 
 export default function DashBoard() {
-  // ====================== STATES ======================
   const [selectedIds, setSelectedIds] = useState(new Set());
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
@@ -23,12 +22,10 @@ export default function DashBoard() {
   const [isUnsubscribing, setIsUnsubscribing] = useState(false);
   const [isUnSubListModal, setIsUnsubscribeListModalOpen] = useState(false);
 
-  // ====================== CUSTOM HOOKS & CONTEXT ======================
   const { userInfo, token } = useUserContext();
   const navigate = useNavigate();
   const { width } = useWindowSize();
 
-  // ====================== DERIVED VALUES ======================
   const selectedChannels = useMemo(() => {
     return data
       .filter((d) => selectedIds.has(d.id))
@@ -55,7 +52,6 @@ export default function DashBoard() {
     return Math.ceil(data.length / channelPerPage);
   }, [data]);
 
-  // ====================== HANDLERS ======================
   const handleToggleChannel = useCallback(
     (channelId) => {
       setSelectedIds((prev) => {
@@ -136,7 +132,6 @@ export default function DashBoard() {
     setIsUnsubscribeModalOpen((prev) => !prev);
   }, []);
 
-  // ====================== EFFECTS ======================
   useEffect(() => {
     if (!token || !userInfo) {
       navigate("/");
@@ -182,15 +177,13 @@ export default function DashBoard() {
     fetchData();
   }, [userInfo?.email, userInfo?.name, token]);
 
-  // ====================== RENDER ======================
   return (
-    <>
+    <div className="bg-black text-white font-roboto">
       <div>
         <Toaster position="bottom-right" reverseOrder={true} />
       </div>
       {userInfo && (
-        <>
-          {/* Header is now outside the relative container */}
+        <div>
           <Header
             totalSubscriptions={data.length}
             selectedCount={selectedIds.size}
@@ -227,9 +220,9 @@ export default function DashBoard() {
               conditiontoAnimate={isUnsubscribeModalOpen}
               key="unsubModel"
                 title="Are you sure?"
-                message={`“You are unsubscribing ${selectedIds.size} channel${
+                message={`You are unsubscribing ${selectedIds.size} channel${
                   selectedIds.size !== 1 ? "s" : "" 
-                }. This action cannot be undone.”`}
+                }. This action cannot be undone.`}
                 onConfirm={handleUnsubscribe}
                 onCancel={handleToggleUnsuscribe}
                 confirmText="Yes, Unsubscribe"
@@ -239,7 +232,7 @@ export default function DashBoard() {
             {isLoading ? (
               <SkeletonLoader />
             ) : (
-              <div className="overflow-y-auto max-h-screen w-full relative">
+              <div className="overflow-y-auto min-h-screen w-full relative pb-16">
                 <ChannelList
                   data={ paginatedData}
                   selectedIds={selectedIds}
@@ -248,9 +241,9 @@ export default function DashBoard() {
               </div>
             )}
           </div>
-        </>
+        </div>
       )}
       <Footer/>
-    </>
+    </div>
   );
 }

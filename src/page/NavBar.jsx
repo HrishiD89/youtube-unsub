@@ -55,12 +55,12 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="bg-black text-white border-b sticky top-0 z-[99] ">
+    <nav className="bg-[#0f0f0f] text-white border-b border-b-gray-800  font-roboto  sticky top-0 z-[99] ">
       <div>
         <Toaster position="bottom-right" reverseOrder={true} />
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
-        <div className="flex justify-between h-16 items-center">
+        <div className="flex justify-between  h-14 items-center">
           <div className="flex items-center justify-center">
             <AiOutlineYoutube className="w-8 h-8 text-red-600" />
             <Link
@@ -103,10 +103,10 @@ export default function NavBar() {
                   alt=""
                 />
                 {isOpen && (
-                  <span className="absolute right-0 gap-2 flex flex-col  text-sm bg-gray-900 p-4  rounded-md mt-2">
+                  <span className="absolute right-0 min-w-56  gap-2 flex flex-col  bg-gray-900 p-4  rounded-md mt-2">
                     <p className="font-bold">Google Account</p>
-                    <p className="text-gray-400">{userInfo.email}</p>
-                    <p className="text-gray-400 border-b-2 border-b-gray-600 pb-2">
+                    <p className="text-gray-400 text-sm">{userInfo.email}</p>
+                    <p className="text-gray-400 text-sm border-b-2 border-b-gray-600 pb-2">
                       {userInfo.name}
                     </p>
                     <p onClick={handleTermsToggle} className="py-2 px-4 flex items-center gap-2  bg-blue-500 hover:bg-blue-700 cursor-pointer rounded-md">

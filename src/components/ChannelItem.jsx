@@ -54,16 +54,15 @@ const ChannelItem = memo(function ChannelItem({ item, isSelected, onToggle }) {
             <div className=" text-xs text-gray-400 flex sm:items-center sm:flex-row flex-col ">
               <p>{item.details.snippet.customUrl}</p>
               <LuDot className="hidden sm:block" />
-              <span className="flex gap-2">
-              <p>
-                {formatSubscriberCount(item.details.statistics.subscriberCount)}
-              </p>
-              <LuDot className="hidden sm:block" />
-              <p>
-                {item.details.statistics.videoCount} videos
-              </p>
+              <span className="flex items-center">
+                <p>
+                  {formatSubscriberCount(
+                    item.details.statistics.subscriberCount
+                  )}subscribers
+                </p>
+                <LuDot className="" />
+                <p>{formatSubscriberCount(item.details.statistics.videoCount)} videos</p>
               </span>
-              
             </div>
             <div className="hidden sm:block text-xs text-gray-400 w-full ">
               <p>{trimToWords(item.snippet.description, 55)}</p>

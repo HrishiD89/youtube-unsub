@@ -17,7 +17,7 @@ export const Header = ({
   width,
 }) => {
   return (
-    <div className="bg-black px-4 flex flex-col gap-3 sticky left-0 right-0 top-16  z-[45] py-4 overflow-hidden max-w-7xl mx-auto sm:px-6 lg:px-8 ">
+    <div className="bg-black text-white px-4 flex flex-col gap-3 sticky left-0 right-0 top-14 z-[45] py-4 overflow-hidden max-w-7xl mx-auto sm:px-6 lg:px-8 ">
       <div className="flex items-center justify-between gap-2 sm:gap-4">
         <div className="flex items-center gap-3">
           <a
