@@ -2,8 +2,10 @@
 import { GrCaretNext } from "react-icons/gr";
 import { GrCaretPrevious } from "react-icons/gr";
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const maxVisiblePages = 3;
+const Pagination = ({ currentPage, totalPages, onPageChange,width }) => {
+  let maxVisiblePages = 1;
+
+  if(width > 640) maxVisiblePages = 3;
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
@@ -26,7 +28,8 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const visiblePages = getVisiblePages();
 
   return (
-    <div className="sm:flex items-center justify-center space-x-2 hidden">
+    // <div className="sm:flex items-center justify-center space-x-2 hidden">
+    <div className="flex items-center justify-center space-x-2 ">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}

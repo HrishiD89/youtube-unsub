@@ -1,19 +1,27 @@
 import { AiOutlineYoutube } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/UserContext";
-import { RxAvatar } from "react-icons/rx";
 import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import ConfirmationModal from "../components/modals/ConfirmationModal";
 import { motion } from "motion/react";
+import TermsModal from "../components/modals/TermsModal";
+import { RiLogoutBoxLine } from "react-icons/ri";
+import { LuLogOut } from "react-icons/lu";
+import { MdDeleteSweep } from "react-icons/md";
 
 export default function NavBar() {
   const { userInfo, token, setUserInfo, setToken } = useUserContext();
   const [isOpen, setIsOpen] = useState(false);
   const [confirmClearStorage, setconfirmClearStorage] = useState(false);
   const [confirmLogout, setConfirmLogout] = useState(false);
+  const [termsModal, setTermsModal] = useState(false);
 
   const navigate = useNavigate();
+
+  const handleTermsToggle = () => {
+    setTermsModal(!termsModal);
+  };
 
   const logout = () => {
     setUserInfo(null);
@@ -65,15 +73,29 @@ export default function NavBar() {
           </div>
           <div className="flex items-center gap-4">
             {userInfo === null ? (
-              <RxAvatar className="h-8 w-8 text-gray-400" />
+              <div className="relative">
+                <motion.button
+                  onClick={handleTermsToggle}
+                  whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
+                  whileTap={{ scale: 0.9 }}
+                  className=" bg-blue-500  rounded-md text-sm py-2 px-4"
+                >
+                  Privacy & Terms
+                </motion.button>
+                <>
+                  {termsModal && (
+                    <TermsModal handleTermsToggle={handleTermsToggle} />
+                  )}
+                </>
+              </div>
             ) : (
               <div className="relative">
                 <motion.img
-                 whileHover={{
-            scale: 1.2,
-            transition: { duration: 0.1 },
-          }}
-          whileTap={{ scale: 0.9 }}
+                  whileHover={{
+                    scale: 1.2,
+                    transition: { duration: 0.1 },
+                  }}
+                  whileTap={{ scale: 0.9 }}
                   onClick={() => {
                     setIsOpen(!isOpen);
                   }}
@@ -85,17 +107,28 @@ export default function NavBar() {
                   <span className="absolute right-0 gap-2 flex flex-col  text-sm bg-gray-900 p-4  rounded-md mt-2">
                     <p className="font-bold">Google Account</p>
                     <p className="text-gray-400">{userInfo.email}</p>
-                    <p className="text-gray-400 border-b-2 border-b-gray-600 pb-2"> {userInfo.name}</p>
-                    <p
-                      className="py-2 px-4 text-nowrap bg-gray-500 hover:bg-gray-600   cursor-pointer rounded-md"
-                      onClick={handleClearLocalStorageConfirm}
-                    >
-                      Clear Local Storage
+                    <p className="text-gray-400 border-b-2 border-b-gray-600 pb-2">
+                      {userInfo.name}
+                    </p>
+                    <p onClick={handleTermsToggle} className="py-2 px-4 flex items-center gap-2  bg-blue-500 hover:bg-blue-700 cursor-pointer rounded-md">
+                      Privacy Policy
                     </p>
                     <p
-                      className="py-2 px-4  bg-red-500 hover:bg-red-700 cursor-pointer rounded-md"
+                      className="py-2 px-4 flex items-center gap-2 text-nowrap bg-gray-500 hover:bg-gray-600   cursor-pointer rounded-md"
+                      onClick={handleClearLocalStorageConfirm}
+                    >
+                      <span>
+                        <MdDeleteSweep className="w-5 h-5 " />
+                      </span>
+                      Clear Data
+                    </p>
+                    <p
+                      className="py-2 px-4 flex items-center gap-2  bg-red-500 hover:bg-red-700 cursor-pointer rounded-md"
                       onClick={handleLogoutConfirm}
                     >
+                      <span>
+                        <LuLogOut className="w-5 h-5 " />
+                      </span>
                       LogOut
                     </p>
                   </span>
@@ -104,11 +137,11 @@ export default function NavBar() {
                   {confirmLogout && (
                     <ConfirmationModal
                       title="Are you sure?"
-                      message="You want to Logout?"
+                      message="This will log you out, remove your session."
                       onConfirm={logout}
                       onCancel={handleLogoutConfirm}
-                      confirmText="Yes"
-                      cancelText="No"
+                      confirmText="Yes, Logout"
+                      cancelText="No, Cancel"
                     />
                   )}
                 </>
@@ -116,12 +149,17 @@ export default function NavBar() {
                   {confirmClearStorage && (
                     <ConfirmationModal
                       title="Are you sure?"
-                      message="You want to clear local Storage?"
+                      message="This will log you out, remove your session, and clear all locally stored data."
                       onConfirm={clearlocalStorage}
                       onCancel={handleClearLocalStorageConfirm}
-                      confirmText="Yes"
-                      cancelText="No"
+                      confirmText="Yes, Logout"
+                      cancelText="No, Cancel"
                     />
+                  )}
+                </>
+                <>
+                  {termsModal && (
+                    <TermsModal handleTermsToggle={handleTermsToggle} />
                   )}
                 </>
               </div>

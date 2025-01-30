@@ -12,7 +12,7 @@ const UnsubscribeListModal = ({
 
 
   return (
-    <div className="bg-black/60 fixed top-0 left-0 right-0 bottom-0 z-[99] px-4 sm:px-0">
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[99] px-4 sm:px-0">
       <div className="max-w-2xl w-full bg-gray-900 rounded-md overflow-hidden max-h-96 mx-auto mt-64 sm:mt-40">
         <div className="overflow-y-auto max-h-screen">
           <div className="bg-gray-800 flex items-center w-full justify-between px-3 py-2 gap-3">

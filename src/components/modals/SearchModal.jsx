@@ -3,6 +3,8 @@ import { useEffect, useMemo } from "react";
 import { useRef, useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { IoCloseCircle } from "react-icons/io5";
+import { motion } from "motion/react";
+import { IoMdClose } from "react-icons/io";
 
 const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
   const searchRef = useRef(null);
@@ -29,9 +31,22 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
   }, []);
 
   return (
-    <div className="bg-black/60 fixed top-0 left-0 right-0 bottom-0 z-[99] px-4 sm:px-0">
-      <div className="max-w-2xl w-full bg-gray-900 rounded-md overflow-hidden max-h-96 mx-auto  mt-64 sm:mt-40">
-        <div className="bg-gray-800 flex items-center w-full justify-center px-3 gap-3">
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[99] px-4 sm:px-0">
+      <div className="max-w-2xl w-full bg-gray-900 rounded-md overflow-hidden max-h-96 mx-auto  mt-40">
+        <div className="bg-gray-800 flex items-center w-full justify-end px-3 py-2 gap-3">
+          <motion.span
+            whileHover={{
+              scale: 1.2,
+              transition: { duration: 0.1 },
+            }}
+            whileTap={{ scale: 0.9 }}
+            className="cursor-pointer group"
+            onClick={onClick}
+          >
+            <IoMdClose className="w-6 h-6 text-gray-400 hover:text-red-500" />
+          </motion.span>
+        </div>
+        <div className="bg-gray-900 flex items-center w-full justify-center px-3 gap-3 border-b border-gray-800">
           <span className="p-1">
             <CiSearch className="w-6 h-6" />
           </span>
@@ -43,12 +58,21 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
             ref={searchRef}
             type="text"
             placeholder="Search channels..."
-            className="p-3 w-full cursor-pointer bg-gray-800 text-white placeholder-gray-400 focus:outline-none"
+            className="p-3 w-full cursor-pointer bg-gray-900 text-white placeholder-gray-400 focus:outline-none"
           />
-          <span className="p-1 cursor-pointer group" onClick={onClick}>
-            <IoCloseCircle className="w-6 h-6 hover:text-red-500 text-gray-400" />
-          </span>
-          
+          {searchQuery.length > 0 && (
+            <motion.span
+              whileHover={{
+                scale: 1.2,
+                transition: { duration: 0.1 },
+              }}
+              whileTap={{ scale: 0.9 }}
+              className="cursor-pointer group"
+              onClick={() => setSearchQuery("")}
+            >
+              <IoCloseCircle className="w-6 h-6 text-gray-400" />
+            </motion.span>
+          )}
         </div>
         <div className="overflow-y-auto max-h-screen">
           {filterSubs.length > 0 ? (

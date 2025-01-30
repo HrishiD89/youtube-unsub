@@ -10,6 +10,7 @@ import { fetchAllSubscription, UnsuscribeChannels } from "../utils";
 import ConfirmationModal from "../components/modals/ConfirmationModal";
 import UnsubscribeListModal from "../components/modals/UnsubscribeListModal";
 import SkeletonLoader from "../components/SkeletonLoader";
+import Footer from "../components/Footer";
 
 export default function DashBoard() {
   // ====================== STATES ======================
@@ -125,6 +126,8 @@ export default function DashBoard() {
     setToggleSearchModal((prev) => !prev);
   }, []);
 
+  
+
   const toggleUnSubModal = useCallback(() => {
     setIsUnsubscribeListModalOpen((prev) => !prev);
   }, []);
@@ -199,6 +202,8 @@ export default function DashBoard() {
             isUnsubscribing={isUnsubscribing}
             toggleUnSubModal={toggleUnSubModal}
             isLoading={isLoading}
+            width={width}
+
           />
           {/* Main content with relative positioning */}
           <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative`}>
@@ -221,9 +226,9 @@ export default function DashBoard() {
             {isUnsubscribeModalOpen && (
               <ConfirmationModal
                 title="Are you sure?"
-                message={`You are unsubscribing ${selectedIds.size} channel${
-                  selectedIds.size !== 1 ? "s" : ""
-                }.`}
+                message={`“You are unsubscribing ${selectedIds.size} channel${
+                  selectedIds.size !== 1 ? "s" : "" 
+                }. This action cannot be undone.”`}
                 onConfirm={handleUnsubscribe}
                 onCancel={handleToggleUnsuscribe}
                 confirmText="Yes, Unsubscribe"
@@ -235,7 +240,7 @@ export default function DashBoard() {
             ) : (
               <div className="overflow-y-auto max-h-screen w-full relative">
                 <ChannelList
-                  data={width < 640 ? data : paginatedData}
+                  data={ paginatedData}
                   selectedIds={selectedIds}
                   onToggle={handleToggleChannel}
                 />
@@ -244,6 +249,7 @@ export default function DashBoard() {
           </div>
         </>
       )}
+      <Footer/>
     </>
   );
 }
