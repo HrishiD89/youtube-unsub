@@ -7,7 +7,7 @@ import ConfirmationModal from "../components/modals/ConfirmationModal";
 import { motion } from "motion/react";
 import TermsModal from "../components/modals/TermsModal";
 import { LuLogOut } from "react-icons/lu";
-import { MdAccountCircle, MdDeleteSweep } from "react-icons/md";
+import { MdDeleteSweep } from "react-icons/md";
 
 export default function NavBar() {
   const { userInfo, token, setUserInfo, setToken } = useUserContext();
@@ -65,15 +65,14 @@ export default function NavBar() {
             <AiOutlineYoutube className="w-8 h-8 text-red-600" />
             <Link
               to={token === null ? "/" : "/dashboard"}
-              className="ml-2 text-xl "
+              className="ml-2 sm:text-xl text-lg "
             >
               YoutubeUnsub
             </Link>
           </div>
           <div className="flex items-center gap-4">
             {userInfo === null ? (
-              <div className="relative flex items-center justify-center gap-3">
-              <MdAccountCircle className="w-8 h-8"/>
+              <div className="relative flex items-center justify-center gap-3 flex-shrink-0">
                 <motion.button
                   onClick={handleTermsToggle}
                   whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}

@@ -43,7 +43,7 @@ export default function LandingPage() {
       <div className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl md:text-6xl">
+            <h1 className="text-3xl tracking-tight font-extrabold text-white sm:text-4xl md:text-6xl">
               <span className="block">Clean Up Your YouTube</span>
               <span className="block text-red-600">Subscriptions in Bulk</span>
             </h1>
