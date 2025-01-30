@@ -1,127 +1,82 @@
 /* eslint-disable react/prop-types */
 import { AnimatePresence, motion } from "framer-motion";
-import { FaCircle } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
 const TermsModal = ({ termsModal, handleTermsToggle }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md p-4">
-      <AnimatePresence>
-        {termsModal && (
+    <AnimatePresence>
+      {termsModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md p-4 flex justify-center items-center">
           <motion.div
-            key="termsModal"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.4 }}
-            className="mx-auto mt-10 w-full max-w-2xl overflow-hidden rounded-md bg-gray-900"
+            className="w-full max-w-2xl rounded-md bg-gray-900 shadow-lg"
           >
-            <div className="flex items-center justify-end bg-gray-800 px-4 py-2">
-              <motion.span
-                whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
-                whileTap={{ scale: 0.9 }}
-                className="cursor-pointer group"
-                onClick={handleTermsToggle}
-              >
-                <IoMdClose className="h-5 w-5 text-blue-500" />
-              </motion.span>
-            </div>
-
-            <div className="p-4 w-full flex flex-col gap-4">
-              <h2 className="sm:text-2xl text-xl font-semibold text-white">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between bg-gray-800 px-4 py-3">
+              <h2 className="text-lg font-semibold text-white">
                 Privacy Policy & Terms
               </h2>
-              <ul className="space-y-3 text-sm text-gray-400">
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  This app is not affiliated with, endorsed, or promoted by
-                  YouTube or Google.
-                </li>
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  We do not store, track, or collect any personal data.
-                </li>
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  This tool interacts directly with the YouTube API but does not
-                  retain any user credentials.
-                </li>
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  All authentication is handled via Google OAuth.
-                </li>
+              <motion.button
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-blue-500"
+                onClick={handleTermsToggle}
+              >
+                <IoMdClose className="h-5 w-5" />
+              </motion.button>
+            </div>
 
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  By using this tool, you agree that all actions performed (such
-                  as unsubscribing) are your responsibility.
+            {/* Modal Content */}
+            <div className="p-5 text-gray-400 text-sm">
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500">•</span>
+                  This app uses the YouTube API but is not affiliated with YouTube or Google. No personal data is collected.
                 </li>
-
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  We are not responsible for any unintended consequences, such
-                  as loss of subscriptions or account restrictions.
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500">•</span>
+                  Authentication is via Google OAuth. Actions like unsubscribing are your responsibility.
                 </li>
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  This tool relies on the YouTube API, which may change or
-                  become restricted at any time. We do not guarantee
-                  uninterrupted access.
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500">•</span>
+                  We are not liable for unintended consequences (e.g., lost subscriptions).
                 </li>
-                <li className="flex items-center gap-4">
-                  <span>
-                    <FaCircle className="h-2 w-2 text-blue-500" />
-                  </span>
-                  Users must comply with YouTube’s Terms of Service and API
-                  policies while using this tool.
+                <li className="flex items-start gap-3">
+                  <span className="text-blue-500">•</span>
+                  Users must comply with YouTube&apos;s Terms of Service.
                 </li>
-                <li className="flex  flex-col ">
-                  <span className="flex item-center items-center gap-4">
-                    <span>
-                      <FaCircle className="h-2 w-2 text-blue-500" />
-                    </span>
-                    Users can revoke this tool’s access anytime via their Google
-                    account settings.
+                <li className="flex flex-col gap-1">
+                  <span className="flex items-start gap-3">
+                    <span className="text-blue-500">•</span>
+                    You can revoke access anytime via your Google Account Security.
                   </span>
                   <a
-                    className="text-blue-400 underline italic"
+                    className="text-blue-400 underline italic pl-6"
                     href="https://myaccount.google.com/security?continue=https://myaccount.google.com/security"
                   >
-                    <span className=" text-nowrap pl-6">
-                      Google Account Security &rarr; Third-party apps &rarr;
-                      youtube-unsuscribe &rarr; Remove Access
-                    </span>
+                    Google Account Security &rarr; Third-party apps &rarr; youtube-unsubscribe &rarr; Remove Access
                   </a>
                 </li>
               </ul>
-              <div className="w-full items-center flex flex-col gap-4 py-3">
-                <motion.button
-                  onClick={handleTermsToggle}
-                  whileTap={{ scale: 0.9 }}
-                  className="bg-blue-500 hover:bg-blue-600  rounded-md text-sm py-2 px-4 w-full"
-                >
-                  I Understand
-                </motion.button>
-              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-5 pb-5">
+              <motion.button
+                onClick={handleTermsToggle}
+                whileTap={{ scale: 0.95 }}
+                className="bg-blue-500 hover:bg-blue-600 w-full py-2 rounded-md text-white font-medium"
+              >
+                I Understand
+              </motion.button>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 };
 
