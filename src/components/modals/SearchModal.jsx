@@ -32,13 +32,17 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[99] px-4 sm:px-0">
-      <div className="max-w-2xl w-full bg-gray-900 rounded-md overflow-hidden max-h-96 mx-auto  mt-40">
+      <motion.div
+        key="searchModal"
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        className="max-w-2xl w-full bg-gray-900 rounded-md overflow-hidden max-h-96 mx-auto mt-40"
+      >
         <div className="bg-gray-800 flex items-center w-full justify-end px-3 py-2 gap-3">
           <motion.span
-            whileHover={{
-              scale: 1.2,
-              transition: { duration: 0.1 },
-            }}
+            whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
             whileTap={{ scale: 0.9 }}
             className="cursor-pointer group"
             onClick={onClick}
@@ -52,9 +56,7 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
           </span>
           <input
             value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-            }}
+            onChange={(e) => setSearchQuery(e.target.value)}
             ref={searchRef}
             type="text"
             placeholder="Search channels..."
@@ -62,10 +64,7 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
           />
           {searchQuery.length > 0 && (
             <motion.span
-              whileHover={{
-                scale: 1.2,
-                transition: { duration: 0.1 },
-              }}
+              whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
               whileTap={{ scale: 0.9 }}
               className="cursor-pointer group"
               onClick={() => setSearchQuery("")}
@@ -77,40 +76,38 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
         <div className="overflow-y-auto max-h-screen">
           {filterSubs.length > 0 ? (
             <div>
-              {filterSubs.map((item) => {
-                return (
+              {filterSubs.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex relative items-center py-3 px-4 gap-3 hover:bg-gray-400/20 cursor-pointer justify-between"
+                >
                   <div
-                    key={item.id}
-                    className={`  flex relative items-center p-3 gap-3  hover:bg-gray-400/20 cursor-pointer justify-between`}
+                    onClick={() => handleToggleChannel(item.id)}
+                    className="flex items-center gap-3 w-full"
                   >
-                    <div
-                      onClick={() => handleToggleChannel(item.id)}
-                      className="flex items-center gap-3 w-full"
-                    >
-                      <img
-                        className="w-10 h-10 rounded-full"
-                        src={item.snippet.thumbnails.default.url}
-                        alt={item.title}
-                      />
-                      <div>
-                        <p>{item.snippet.title}</p>
-                        <p className="text-gray-400 text-sm">
-                          {item.details.snippet.customUrl}
-                        </p>
-                      </div>
+                    <img
+                      className="w-10 h-10 rounded-full"
+                      src={item.snippet.thumbnails.default.url}
+                      alt={item.title}
+                    />
+                    <div>
+                      <p>{item.snippet.title}</p>
+                      <p className="text-gray-400 text-sm">
+                        {item.details.snippet.customUrl}
+                      </p>
                     </div>
-                    <span className="text-red-500 bg-red-400/20 px-2  rounded-full hover:bg-gray-400/20 ">
-                      {selectedIds.has(item.id) ? 1 : ""}
-                    </span>
                   </div>
-                );
-              })}
+                  <span className="text-red-500 bg-red-400/20 px-2 rounded-full hover:bg-gray-400/20">
+                    {selectedIds.has(item.id) ? 1 : ""}
+                  </span>
+                </div>
+              ))}
             </div>
           ) : (
             <div className="p-3">No results found</div>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };

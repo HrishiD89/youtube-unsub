@@ -6,9 +6,8 @@ import { useState } from "react";
 import ConfirmationModal from "../components/modals/ConfirmationModal";
 import { motion } from "motion/react";
 import TermsModal from "../components/modals/TermsModal";
-import { RiLogoutBoxLine } from "react-icons/ri";
 import { LuLogOut } from "react-icons/lu";
-import { MdDeleteSweep } from "react-icons/md";
+import { MdAccountCircle, MdDeleteSweep } from "react-icons/md";
 
 export default function NavBar() {
   const { userInfo, token, setUserInfo, setToken } = useUserContext();
@@ -73,18 +72,19 @@ export default function NavBar() {
           </div>
           <div className="flex items-center gap-4">
             {userInfo === null ? (
-              <div className="relative">
+              <div className="relative flex items-center justify-center gap-3">
+              <MdAccountCircle className="w-8 h-8"/>
                 <motion.button
                   onClick={handleTermsToggle}
                   whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
                   whileTap={{ scale: 0.9 }}
                   className=" bg-blue-500  rounded-md text-sm py-2 px-4"
                 >
-                  Privacy & Terms
+                  Privacy Policy
                 </motion.button>
                 <>
                   {termsModal && (
-                    <TermsModal handleTermsToggle={handleTermsToggle} />
+                    <TermsModal termsModal={termsModal} handleTermsToggle={handleTermsToggle} />
                   )}
                 </>
               </div>
@@ -136,6 +136,7 @@ export default function NavBar() {
                 <>
                   {confirmLogout && (
                     <ConfirmationModal
+                      conditiontoAnimate={confirmLogout}
                       title="Are you sure?"
                       message="This will log you out, remove your session."
                       onConfirm={logout}
@@ -148,6 +149,7 @@ export default function NavBar() {
                 <>
                   {confirmClearStorage && (
                     <ConfirmationModal
+                      conditiontoAnimate={confirmClearStorage}
                       title="Are you sure?"
                       message="This will log you out, remove your session, and clear all locally stored data."
                       onConfirm={clearlocalStorage}
@@ -159,7 +161,7 @@ export default function NavBar() {
                 </>
                 <>
                   {termsModal && (
-                    <TermsModal handleTermsToggle={handleTermsToggle} />
+                    <TermsModal termsModal={termsModal} handleTermsToggle={handleTermsToggle} />
                   )}
                 </>
               </div>

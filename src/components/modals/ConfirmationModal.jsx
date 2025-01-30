@@ -13,10 +13,17 @@ const ConfirmationModal = ({
   iconColor = "red-500", 
   confirmButtonClass = "bg-red-500 hover:bg-red-600 border-red-500", 
   cancelButtonClass = "border-2 border-red-500 hover:bg-red-500/10", 
+  conditiontoAnimate,
 }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex justify-center items-center px-4 sm:px-0">
-      <div className=" bg-gray-900 rounded-md overflow-hidden p-4 relative">
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex z-[99] justify-center items-center px-4 sm:px-0">
+      {conditiontoAnimate && (
+        <motion.div
+          key={Math.random()}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.3 }} className=" bg-gray-900 rounded-md overflow-hidden p-4 relative">
         <motion.span
           whileHover={{
             scale: 1.2,
@@ -68,7 +75,7 @@ const ConfirmationModal = ({
             </motion.button>
           </div>
         </div>
-      </div>
+      </motion.div>)}
     </div>
   );
 };

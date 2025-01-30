@@ -225,6 +225,8 @@ export default function DashBoard() {
             )}
             {isUnsubscribeModalOpen && (
               <ConfirmationModal
+              conditiontoAnimate={isUnsubscribeModalOpen}
+              key="unsubModel"
                 title="Are you sure?"
                 message={`“You are unsubscribing ${selectedIds.size} channel${
                   selectedIds.size !== 1 ? "s" : "" 
