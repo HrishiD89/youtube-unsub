@@ -39,8 +39,8 @@ export default function LandingPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-900">
-      <div className="relative overflow-hidden bg-custom-bg bg-contain bg-center ">
+    <div className="min-h-screen bg-black bg-custom-bg bg-contain bg-center ">
+      <div className="relative overflow-hidden ">
         <div className="bg-black/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 ">
             <div className="text-center">
@@ -75,10 +75,10 @@ export default function LandingPage() {
         </div>
       </div>
 
-      <div className="bg-gray-800 py-16">
+      <div className=" bg-black  py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 relative  ">
-            <div className=" bg-gray-700  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className="   bg-[#222222]   flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <Zap className="h-6 w-6" />
               </div>
@@ -90,7 +90,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className=" bg-gray-700   flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className="  bg-[#222222]     flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <CheckCircle className="h-6 w-6" />
               </div>
@@ -103,7 +103,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="  bg-gray-700   flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className="    bg-[#222222]   flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <Shield className="h-6 w-6" />
               </div>
