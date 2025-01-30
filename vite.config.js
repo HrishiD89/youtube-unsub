@@ -15,6 +15,11 @@ export default defineConfig({
   server: {
     historyApiFallback: true, // Important for React Router
   },
+  resolve: {
+    alias: {
+      "@": "/src",
+    },
+  },
   define: {
     'process.env': process.env
   }
