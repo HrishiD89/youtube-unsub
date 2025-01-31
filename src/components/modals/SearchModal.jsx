@@ -31,7 +31,7 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[99] px-4 sm:px-0">
+    <div  className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-[99] px-4 sm:px-0">
       <motion.div
         key="searchModal"
         initial={{ opacity: 0, scale: 0.9 }}
@@ -73,7 +73,7 @@ const SearchModal = ({ onClick, data, handleToggleChannel, selectedIds }) => {
             </motion.span>
           )}
         </div>
-        <div className="overflow-y-auto max-h-screen">
+        <div id="searchModal"  className="overflow-y-auto max-h-screen">
           {filterSubs.length > 0 ? (
             <div>
               {filterSubs.map((item) => (

@@ -25,7 +25,7 @@ const TermsModal = ({ termsModal, handleTermsToggle }) => {
                 className="text-blue-500"
                 onClick={handleTermsToggle}
               >
-                <IoMdClose className="h-5 w-5" />
+                <IoMdClose className="h-6 w-6" />
               </motion.button>
             </div>
 

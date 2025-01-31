@@ -6,8 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ::-webkit-scrollbar {
+#selected-list::-webkit-scrollbar {
   display: none;
-} */
+} 
 
- 
+#searchModal::-webkit-scrollbar {
+  display: none;
+} 
