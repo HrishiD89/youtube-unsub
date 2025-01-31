@@ -71,7 +71,7 @@ export const fetchAllSubscription = async (accessToken) => {
     const batchIds = channelIds.slice(i, i + chunkSize);
     try {
       const channelDetails = await fetchChannelInfo(batchIds, accessToken);
-      
+
       // Create a map of channel details by channel ID for easy lookup
       const channelDetailsMap = channelDetails.reduce((map, channel) => {
         map[channel.id] = channel;
@@ -79,13 +79,15 @@ export const fetchAllSubscription = async (accessToken) => {
       }, {});
 
       // Match subscriptions with their corresponding channel details
-      const batchSubscriptions = subscriptions.slice(i, i + chunkSize).map(sub => {
-        const channelId = sub.snippet.resourceId.channelId;
-        return {
-          ...sub,
-          details: channelDetailsMap[channelId] || null
-        };
-      });
+      const batchSubscriptions = subscriptions
+        .slice(i, i + chunkSize)
+        .map((sub) => {
+          const channelId = sub.snippet.resourceId.channelId;
+          return {
+            ...sub,
+            details: channelDetailsMap[channelId] || null,
+          };
+        });
 
       detailedSubscriptions = detailedSubscriptions.concat(batchSubscriptions);
     } catch (error) {
@@ -147,3 +149,4 @@ export const formatSubscriberCount = (subscriberCount) => {
     return `${count} `;
   }
 };
+

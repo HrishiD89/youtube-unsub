@@ -27,6 +27,7 @@ export default function LandingPage() {
     scope: "https://www.googleapis.com/auth/youtube",
     onSuccess: async (tokenResponse) => {
       const { access_token, expires_in } = tokenResponse;
+      console.log(tokenResponse);
 
       const userData = await fetchUserInfo(access_token);
       setUserInfo(userData);
@@ -78,7 +79,7 @@ export default function LandingPage() {
       <div className=" bg-black  py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 relative  ">
-            <div className="  border-2 border-red-500/50  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className="  border-2 border-red-500/30  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <Zap className="h-6 w-6" />
               </div>
@@ -90,7 +91,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className=" border-2 border-red-500/50    flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className=" border-2 border-red-500/30    flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <CheckCircle className="h-6 w-6" />
               </div>
@@ -103,7 +104,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="   border-2 border-red-500/50  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className="   border-2 border-red-500/30  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <Shield className="h-6 w-6" />
               </div>
