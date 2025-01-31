@@ -114,7 +114,6 @@ export const UnsuscribeChannels = async (channelIds, accessToken) => {
             },
           }
         );
-        console.log(`Unsubscribed from channel ${channelId}:`, response.status);
         return response;
       } catch (error) {
         console.error(
@@ -126,7 +125,6 @@ export const UnsuscribeChannels = async (channelIds, accessToken) => {
     });
 
     const results = await Promise.all(unsubscribePromises);
-    console.log("Unsubscribe process complete.", results);
     return results;
   } catch (overallError) {
     console.error("Overall error during unsubscribe process:", overallError);

@@ -87,6 +87,7 @@ export default function DashBoard() {
     }
 
     setIsUnsubscribing(true);
+    setIsUnsubscribeModalOpen(false);
     try {
       const deletedResponse = await UnsuscribeChannels(
         Array.from(selectedIds),
@@ -115,7 +116,6 @@ export default function DashBoard() {
       );
     } finally {
       setIsUnsubscribing(false);
-      setIsUnsubscribeModalOpen(false);
     }
   }, [data, selectedIds, token, userInfo?.email]);
 

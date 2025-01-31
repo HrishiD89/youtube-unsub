@@ -42,7 +42,7 @@ const UnsubscribeListModal = ({
                     item={item}
                     key={item.id}
                     isSelected={selectedIds.has(item.id)}
-                    handleToggleChannel={() => handleToggleChannel(item.id)} // Pass a function reference
+                    handleToggleChannel={() => handleToggleChannel(item.id)} 
                   />
                 ))}
               </div>
