@@ -40,11 +40,11 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white font-roboto ">
-      <div className="relative overflow-hidden ">
+      <div className="relative overflow-hidden bg-custom-bg">
         <div className="bg-black/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 ">
             <div className="text-center">
-              <h1 className="text-3xl tracking-tight font-extrabold text-white sm:text-4xl md:text-6xl">
+              <h1 className="text-3xl tracking-tight font-extrabold text-white sm:text-4xl md:text-5xl">
                 <span className="block">Clean Up Your YouTube</span>
                 <span className="block text-red-500">
                   Subscriptions in Bulk
@@ -55,8 +55,8 @@ export default function LandingPage() {
                 once. Take control of your feed and declutter your subscription
                 list.
               </p>
-              <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-                <div className="rounded-md shadow">
+              <div className="mt-5 max-w-48 mx-auto sm:flex sm:justify-center md:mt-8">
+                <div className="rounded-md shadow w-full ">
                   <motion.button
                     whileHover={{
                       scale: 1.2,
@@ -64,7 +64,7 @@ export default function LandingPage() {
                     }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => login()}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-500 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
+                    className="w-full flex items-center justify-center px-8 py-3  border border-transparent text-base font-medium rounded-md text-white bg-red-500 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
                   >
                     Get Started
                   </motion.button>
@@ -78,7 +78,7 @@ export default function LandingPage() {
       <div className=" bg-black  py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 relative  ">
-            <div className="  ring-2 ring-red-500  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className="  border-2 border-red-500/50  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <Zap className="h-6 w-6" />
               </div>
@@ -90,7 +90,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className=" ring-2 ring-red-500    flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className=" border-2 border-red-500/50    flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <CheckCircle className="h-6 w-6" />
               </div>
@@ -103,7 +103,7 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="   ring-2 ring-red-500  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
+            <div className="   border-2 border-red-500/50  flex flex-col items-center text-center p-6  rounded-lg shadow-lg">
               <div className="flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white">
                 <Shield className="h-6 w-6" />
               </div>

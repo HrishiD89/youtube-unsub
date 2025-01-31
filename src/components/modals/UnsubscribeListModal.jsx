@@ -17,7 +17,7 @@ const UnsubscribeListModal = ({
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3 }}
-        className="max-w-2xl w-full bg-gray-900 rounded-md overflow-hidden max-h-96 mx-auto mt-64 sm:mt-40"
+        className="max-w-xl w-full bg-gray-900 rounded-md overflow-hidden max-h-96 mx-auto mt-64 sm:mt-40"
       >
         <div className="overflow-y-auto max-h-screen">
           <div className="bg-gray-800 flex items-center w-full justify-between px-3 py-2 gap-3">
