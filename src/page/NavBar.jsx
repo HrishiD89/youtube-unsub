@@ -7,7 +7,7 @@ import ConfirmationModal from "../components/modals/ConfirmationModal";
 import { motion } from "motion/react";
 import TermsModal from "../components/modals/TermsModal";
 import { LuLogOut } from "react-icons/lu";
-import { MdDeleteSweep } from "react-icons/md";
+import { MdDeleteSweep, MdPrivacyTip } from "react-icons/md";
 
 export default function NavBar() {
   const { userInfo, token, setUserInfo, setToken } = useUserContext();
@@ -77,9 +77,9 @@ export default function NavBar() {
                   onClick={handleTermsToggle}
                   whileHover={{ scale: 1.2, transition: { duration: 0.1 } }}
                   whileTap={{ scale: 0.9 }}
-                  className=" bg-blue-500  rounded-md text-sm py-2 px-4"
+                  className=" bg-blue-500 p-2 rounded-full text-white"
                 >
-                  Privacy Policy
+                  <MdPrivacyTip className="w-5 h-5" />
                 </motion.button>
                 <>
                   {termsModal && (
